@@ -2,7 +2,7 @@ FROM node:16
 
 ENV NODE_ENV=production
 
-WORKDIR /src/app
+WORKDIR /src
 
 COPY ["package.json", "package-lock.json*", "./"]
 
@@ -10,5 +10,5 @@ RUN npm install --production
 
 COPY . .
 
-CMD [ "node", "run", "start" ]
+CMD [ "node", "index.js" ]
 
