@@ -25,5 +25,6 @@ jobs:
     - name: Build e push no Azure container registry
       run: | 
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/trabalho-docker:latest
+        docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/trabalho-docker:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/trabalho-docker:$(date +%s)
         docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/trabalho-docker
       
