@@ -1,14 +1,12 @@
 FROM node:16
 
-ENV NODE_ENV=production
+WORKDIR /app
 
-WORKDIR /src
+COPY ["package.json", "package-lock.json*", "/app"]
 
-COPY ["package.json", "package-lock.json*", "./"]
+RUN npm install
 
-RUN npm install --production
+COPY . /app
 
-COPY . .
-
-CMD [ "node", "index.js" ]
+ENTRYPOINT [ "npm", "start" ]
 
